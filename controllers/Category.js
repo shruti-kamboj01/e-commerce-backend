@@ -1,7 +1,6 @@
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 
-//add category
 exports.createCategory = async (req, res) => {
   try {
     //get data
@@ -33,7 +32,6 @@ exports.createCategory = async (req, res) => {
   }
 };
 
-//update Category
 exports.updateCategory = async (req, res) => {
   try {
     const { categoryId } = req.body;
@@ -70,11 +68,13 @@ exports.updateCategory = async (req, res) => {
   }
 };
 
-//delete Category
 exports.deletCategory = async (req, res) => {
   try {
     const { categoryId } = req.body;
+    const userId = req.user.id;
+    // console.log(typeof(userId))
     const category = await Category.findById(categoryId);
+    // console.log(event)
     if (!category) {
       return res.status(403).json({
         success: false,
@@ -82,7 +82,11 @@ exports.deletCategory = async (req, res) => {
       });
     }
     // TODO: if category deleted then products of that category should also be deleted
-    await Product.deleteMany({category: categoryId});
+    // await Product.findByIdAndUpdate(
+
+    //   { $pull: },
+    //   { new: true }
+    // );
     await Category.findByIdAndDelete(categoryId);
 
     return res.json({

@@ -2,7 +2,6 @@ const Auth = require("../models/Auth")
 const Category = require("../models/Category");
 const Product = require("../models/Product");
 
-//create product
 exports.createProduct = async (req, res) => {
   try {
     //get data
@@ -50,7 +49,6 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-//update product
 exports.updateProduct = async (req, res) => {
   try {
     const { productId } = req.body;
@@ -90,7 +88,6 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
-// delete product
 exports.deleteProduct = async (req, res) => {
   try {
     const { productId, categoryId } = req.body;
