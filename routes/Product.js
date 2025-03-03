@@ -5,7 +5,7 @@ const router = express.Router()
 
 //common apis
 router.get('/allProducts', auth, showAllProducts)
-router.get('/product',auth, showSingleProduct)
+router.get('/product', auth, showSingleProduct)
 
 //admin apis
 router.post('/createProduct', auth, isAdmin, createProduct)

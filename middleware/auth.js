@@ -37,11 +37,12 @@ exports.auth = async (req, res, next) => {
 //user middleware
 exports.isUser = async (req, res, next) => {
   try {
-    console.log(req.user.roles);
-    if (req.user.accountType !== "User") {
+    console.log(req.user.role);
+    
+    if (req.user.role !== "User") {
       return res.status(401).json({
         success: false,
-        message: "This is a protected route for Student only",
+        message: "This is a protected route for User only",
       });
     }
     next();

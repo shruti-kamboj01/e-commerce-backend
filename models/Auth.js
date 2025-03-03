@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Order = require("./Order");
 
 const authSchema = new mongoose.Schema({
   name: {
@@ -13,11 +14,17 @@ const authSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  roles:{
-    type:String,
-    enum:["Admin", "User"],
-    required:true,
-},
+  productOrdered: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Order,
+    },
+  ],
+  roles: {
+    type: String,
+    enum: ["Admin", "User"],
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Auth", authSchema);

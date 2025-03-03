@@ -1,4 +1,4 @@
-const { Product } = require("../models/Product");
+const Product  = require("../models/Product");
 
 // Sales category-wise
 exports.salesByCategory = async (req, res) => {
@@ -8,10 +8,14 @@ exports.salesByCategory = async (req, res) => {
       { $sort: { totalSales: -1 } },
     ]);
 
-    res.status(200).json({ success: true, data: sales });
+    return res.status(200).json({ 
+      success: true, 
+      data: sales });
   } catch (error) {
     console.error("Error fetching category-wise sales:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    return res.status(500).json({ 
+      success: false, 
+      message: "Internal Server Error" });
   }
 };
 
@@ -19,11 +23,14 @@ exports.salesByCategory = async (req, res) => {
 exports.topSellingProducts = async (req, res) => {
   try {
     const topProducts = await Product.find().sort({ totalSold: -1 }).limit(5);
-
-    res.status(200).json({ success: true, data: topProducts });
+    return res.status(200).json({ 
+      success: true,
+      data: topProducts });
   } catch (error) {
     console.error("Error fetching top-selling products:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    return res.status(500).json({ 
+      success: false, 
+      message: "Internal Server Error" });
   }
 };
 
@@ -32,9 +39,13 @@ exports.worstSellingProducts = async (req, res) => {
   try {
     const worstProducts = await Product.find().sort({ totalSold: 1 }).limit(5);
 
-    res.status(200).json({ success: true, data: worstProducts });
+    res.status(200).json({ 
+      success: true, 
+      data: worstProducts });
   } catch (error) {
     console.error("Error fetching worst-selling products:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    res.status(500).json({ 
+      success: false, 
+      message: "Internal Server Error" });
   }
 };
