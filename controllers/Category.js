@@ -13,7 +13,7 @@ exports.createCategory = async (req, res) => {
       });
     }
     //create entry in db
-    const CategoryDetails = await Category.create({
+    const categoryDetails = await Category.create({
       name: name,
       description: description,
     });
@@ -22,6 +22,7 @@ exports.createCategory = async (req, res) => {
     return res.status(200).json({
       success: true,
       messsage: "Category created successfully",
+      categoryDetails,
     });
   } catch (error) {
     return res.status(500).json({
@@ -44,7 +45,6 @@ exports.updateCategory = async (req, res) => {
     }
 
     const { name, description } = req.body;
-    // console.log("updates are", typeof(updates))
     if (name) {
       category.name = name;
     } else if (description) {
@@ -53,7 +53,6 @@ exports.updateCategory = async (req, res) => {
 
     const updatedCategory = await category.save();
     // console.log(updatedCategory)
-
     return res.json({
       success: true,
       message: "Category updated successfully",
@@ -71,7 +70,6 @@ exports.updateCategory = async (req, res) => {
 
 exports.deletCategory = async (req, res) => {
   try {
-    //  console.log("entered")
     const { categoryId } = req.body;
     const userId = req.user.id;
     // console.log(typeof(userId))
@@ -85,7 +83,7 @@ exports.deletCategory = async (req, res) => {
     }
     // TODO: if category deleted then products of that category should also be deleted
     // await Product.findByIdAndUpdate(
-       
+
     //   { $pull: },
     //   { new: true }
     // );
