@@ -5,7 +5,7 @@ To run this project follow the following steps-
 3. npm intall
 4. Create .env file inside server/ and add:
 
-     1.PORT=5000
-     2.MONGO_URI=your_mongodb_uri
-     3.JWT_SECRET=your_jwt_secret
+      1.PORT=5000
+      2.MONGO_URI=your_mongodb_uri
+      3.JWT_SECRET=your_jwt_secret
 6. npm start/npm run dev
