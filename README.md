@@ -2,7 +2,7 @@ To run this project follow the following steps-
 
 1. Clone the repository in local machine git clone https://github.com/shruti-kamboj01/e-commerce-backend.git
 2. cd server
-3. npm intall
+3. npm install
 4. Create .env file inside server/ and add:
 
       1.PORT=5000<br></br>
